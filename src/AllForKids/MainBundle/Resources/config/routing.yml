@@ -1,0 +1,47 @@
+all_for_kids_main_homepage:
+    path:     /
+    defaults: { _controller: AllForKidsMainBundle:Default:index }
+accueil:
+    path:     /Accueil
+    defaults: { _controller: AllForKidsMainBundle:Accueil:Accueil }
+
+Admin:
+    path:     /Show
+    defaults: { _controller: AllForKidsMainBundle:Admin:Show }
+
+
+showbaby:
+    path:     /ShowBaby
+    defaults: { _controller: AllForKidsMainBundle:BabySitter:Show }
+
+showPediatre:
+    path:     /ShowPediatre
+    defaults: { _controller: AllForKidsMainBundle:Pediatre:Show }
+
+ajout:
+    path:     /Ajout
+    defaults: { _controller: AllForKidsMainBundle:Store:Ajout }
+Liste:
+    path:     /Liste
+    defaults: { _controller: AllForKidsMainBundle:Store:Liste }
+Listes:
+    path:     /Listes
+    defaults: { _controller: AllForKidsMainBundle:Store:ListeA }
+Update:
+    path:     /Update/{id}
+    defaults: { _controller: AllForKidsMainBundle:Store:update }
+Details:
+    path:     /Details
+    defaults: { _controller: AllForKidsMainBundle:Store:Panier }
+Recherche:
+    path:     /Recherche
+    defaults: { _controller: AllForKidsMainBundle:Store:Recherche }
+Panier:
+    path:     /Panier/{id}
+    defaults: { _controller: AllForKidsMainBundle:Store:AjoutAuPanier }
+SupprimerDuPanier:
+    path:     /SupprimerDuPanier/{id}
+    defaults: { _controller: AllForKidsMainBundle:Store:SupprimerDuPanier }
+ValiderPanier:
+    path:     /ValiderPanier
+    defaults: { _controller: AllForKidsMainBundle:Store:ajouterLigne }

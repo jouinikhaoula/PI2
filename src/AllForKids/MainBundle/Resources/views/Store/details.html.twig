@@ -1,0 +1,97 @@
+{% extends 'default/index.html.twig' %}
+{% block bodyindex %}
+<div id="kids_middle_container">
+    <!-- .content -->
+    <div class="kids_top_content">
+        <div class="kids_top_content_middle ">
+            <div class="header_container ">
+                <div class="l-page-width">
+                    <h1>Cart</h1>
+                    <ul id="breadcrumbs">
+                        <li><a href="{{ path('Liste')}}" title="Home">Home</a></li> <span class="delimiter">&gt;</span>
+                        <li><span class="current_crumb">Cart</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- .kids_top_content_middle -->
+    </div>
+    <div class="bg-level-2-full-width-container kids_bottom_content">
+        <div class="bg-level-2-page-width-container no-padding">
+            <section class="kids_bottom_content_container">
+                <!-- ***************** - START Image floating - *************** -->
+                <div class="page-content">
+                    <div class="bg-level-2 first-part"></div>
+                    <div class="container l-page-width">
+                        <div class="entry-container single-sidebar">
+                            <main>
+                                <div class='grid-row clearfix'>
+                                    <div class='grid-col grid-col-12'>
+                                        <section class='cws-widget'>
+                                            <section class='cws_widget_content'>
+                                                <div class="woocommerce">
+                                                    <form action="shop-cart.html" method="post">
+                                                        <table class="shop_table cart" cellspacing="0">
+                                                            <thead>
+                                                            <tr>
+                                                                <th class="product-remove">&nbsp;</th>
+                                                                <th class="product-thumbnail">&nbsp;</th>
+                                                                <th class="product-name">Produit</th>
+                                                                <th class="product-price">Prix</th>
+                                                                <th class="product-quantity">Quantité</th>
+                                                                <th class="product-subtotal">Total</th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+
+                                                            <tr class="cart_item">
+                                                                {% for t in produits %}
+                                                                <td class="product-remove">
+
+                                                                    <a href="{{ path('SupprimerDuPanier',{'id':t.id})}}" class="remove" title="Remove this item">&times;</a> </td>
+
+                                                                <td class="product-thumbnail">
+                                                                    <a href="#"><img src="{{asset('bundles/images/' ~t.image) }}" class="attachment-shop_thumbnail" alt="cd_4_angle" /></a>
+                                                                </td>
+                                                                <td class="product-name">
+                                                                    <a href="#">{{ t.nom }} </a> </td>
+                                                                <td class="product-price">
+                                                                    <span class="amount">{{t.prix }}DT</span> </td>
+                                                                <td class="product-quantity">
+                                                                   {#<select name="orderby" class="orderby">
+                                                                        {% for i in 1..10 %}
+                                                                        <option value="popularity" selected='selected'>{{ i }}</option>
+                                                                            {% endfor %}
+                                                                    </select>#}
+                                                                    <input type="text" value="{{ panier[t.id] }}">
+                                                                </td>
+                                                                <td class="product-subtotal">
+                                                                    <span class="amount">{{t.prix * panier[t.id] }}DT</span> </td>
+                                                            </tr>
+                                                {% endfor %}
+                                                            <tr>
+                                                                <td colspan="6" class="actions">
+                                                                    <div class="coupon">
+                                                                        <a href="{{ path('ValiderPanier')}}"  rel="nofollow"
+                                                                           class="button add_to_cart_button product_type_simple">
+                                                                            Commander  </a>
+                                                                    </div>
+
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </form>
+                                                </div>
+                                            </section>
+                                        </section>
+                                    </div>
+                                </div>
+                            </main>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+{% endblock bodyindex %}

@@ -1,0 +1,132 @@
+
+
+
+
+{% extends 'default/index.html.twig' %}
+{% block bodyindex %}
+    <!-- .bg-level-1 -->
+    <div id="kids_middle_container">
+        <!-- .content -->
+        <div class="kids_top_content">
+            <div class="kids_top_content_middle ">
+                <div class="header_container ">
+                    <div class="l-page-width">
+                        <h1> Shop </h1>
+                        <ul id="breadcrumbs">
+                            <nav class="woocommerce-breadcrumb"><a href="index.html">Home</a> > <a href="shop.html">Shop</a> > Page 1</nav>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- .kids_top_content_middle -->
+        </div>
+        <div class="bg-level-2-full-width-container kids_bottom_content">
+            <div class="bg-level-2-page-width-container no-padding">
+                <!-- ***************** - START WooCommerce integration - *************** -->
+                <section class="kids_bottom_content_container">
+                    <div class="page-content">
+                        <div class="bg-level-2 first-part"></div>
+                        <div class="container l-page-width">
+                            <div class="entry-container single-sidebar">
+                                <main class="shop">
+                                    <div id="container">
+                                        <div id="content" role="main">
+                                            <p class="woocommerce-result-count">
+                                                Showing 1–9 of 23 results</p>
+                                            <form class="woocommerce-ordering" method="get">
+                                                <select name="orderby" class="orderby">
+                                                    <option value="menu_order"></option>
+                                                    <option value="popularity" selected='selected'>Vetements</option>
+                                                    <option value="rating">Jouets</option>
+                                                </select>
+                                                <input type="hidden" name="post_type" value="product" />
+                                                <input type="hidden" name="paged" value="1" />
+                                            </form>
+                                            <ul class="products">
+
+                                                {% for prod in p %}
+                                                {% if prod.etat == "accepted" %}
+                                                    <li class="first product has-post-thumbnail">
+                                                        <div class="sale-wrapper"></div>
+                                                        <div class="content-wrapper">
+                                                            <figure>
+                                                                <a href="{{asset('bundles/images/' ~prod.image) }}" data-rel="prettyPhoto" class="prettyPhoto kids_picture" title="cd_4_angle">
+                                                                    <img src="{{asset('bundles/images/' ~prod.image) }}" class="attachment-shop_catalog" alt="cd_4_angle" /></a>
+                                                            </figure>
+                                                        </div>
+                                                        <a href="shop-single-item.html">
+                                                            <div class="title">{{ prod.nom }}</div>
+                                                        </a>
+                                                        <span class="price"><span class="amount">{{ prod.prix }}DT</span></span>
+                                                        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") and   is_granted('ROLE_PARENT') %}
+                                                        <a href="{{ path('Panier',{'id':prod.id})}}"  rel="nofollow"
+                                                           class="button add_to_cart_button product_type_simple">
+                                                            Ajouter au panier
+                                                        </a>
+
+                                                        {% else  %}
+                                                            <a href="{{path('fos_user_security_login')}}"  rel="nofollow"
+                                                               class="button add_to_cart_button product_type_simple">
+                                                                Ajouter au panier
+                                                            </a>
+
+                                                        {% endif %}
+                                                    </li>
+                                                {% endif %}
+                                                {% endfor %}
+
+                                            </ul>
+
+                                            <div class="pagenavi gl">
+                                                <ul class='page-numbers'>
+                                                    <li><span class='page-numbers current'>1</span></li>
+                                                    <li><a class='page-numbers' href='#'>2</a></li>
+                                                    <li><a class='page-numbers' href='#'>3</a></li>
+                                                    <li><a class="next page-numbers" href="#">&rsaquo;</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </main>
+                                <aside id="sidebar-right">
+                                    <div class="widget woocommerce widget_shopping_cart">
+                                        <h3 class="widget-title">Cart</h3>
+                                        <div class="widget_shopping_cart_content">
+                                            <ul class="cart_list product_list_widget ">
+
+                                                {% for prod in p %}
+                                                <li>
+                                                    <a href="#" class="remove" title="Remove this item">×</a>
+                                                    <a href="#">
+                                                        <img src="{{asset('bundles/images/' ~prod.image) }}" class="attachment-shop_thumbnail" alt="cd_4_angle">Woo Single #1&nbsp; </a>
+                                                    <span class="quantity">1 × <span class="amount">{{ prod.prix }}DT</span></span>
+                                                </li>
+                                                {% endfor %}
+
+                                            </ul>
+                                            <!-- end product list -->
+                                            <p class="total"><strong>Subtotal:</strong> <span class="amount">£18.00</span></p>
+                                            <p class="buttons">
+                                                <a href="{{ path('Details')}}" class="button wc-forward">View Cart</a>
+                                                <a href="shop-checkout.html" class="button checkout wc-forward">Checkout</a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </aside>
+                                <div class="kids_clear"></div>
+                            </div>
+                            <!-- .entry-container -->
+                        </div>
+                        <div class="bg-level-2 second-part"></div>
+                    </div>
+                    <!-- ***************** - END Image floating - *************** -->
+                </section>
+                <!-- .bottom_content_container -->
+            </div>
+
+        </div>
+    </div>
+    <!-- .end_content -->
+    <!-- FOOTER BEGIN -->
+    <!-- .kids_bottom_container -->
+{% endblock bodyindex %}

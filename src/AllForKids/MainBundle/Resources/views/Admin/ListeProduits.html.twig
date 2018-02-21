@@ -1,0 +1,43 @@
+{% extends '@AllForKidsMain/Admin/show.html.twig'%}
+   {% block body %}
+
+<div class="graph">
+    <div class="tables">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Nom Produit</th>
+                <th>Prix</th>
+                <th>quantite</th>
+                <th>Disponibilite</th>
+                <th>Catégories</th>
+                <th>Modifer</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for prod in p %}
+
+
+                <tr class="success">
+                    <th scope="row">{{prod.id  }}</th>
+                    <td>{{ prod.nom}}</td>
+                    <td>{{ prod.prix}}</td>
+                    <td>{{ prod.quantite}}</td>
+                    <td>{{ prod.disponible}}</td>
+                    <td>{{ prod.categorie}}</td>
+                    <td><a href="{{ path('Update',{'id':prod.id}) }}">Modifier</a></td>
+
+                </tr>
+
+            {% endfor %}
+
+
+
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+   {% endblock %}

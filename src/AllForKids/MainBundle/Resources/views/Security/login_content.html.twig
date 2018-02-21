@@ -1,0 +1,20 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% if error %}
+    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+{% endif %}
+
+<div class="form-style-5">
+    <form action="{{ path("fos_user_security_check") }}" method="post">
+            <legend><span class="number"></span> Sign In </legend>
+            {% if csrf_token %}
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+            {% endif %}
+            <input type="text" placeholder="username"  id="username" name="_username" value="{{ last_username }}" required="required" autocomplete="username"/>
+            <input type="password" placeholder="password" id="password" name="_password" required="required" autocomplete="current-password"/>
+
+        <button id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}">Se Connecter</button>
+        <p class="message">Not registered? <a href="{{ path('fos_user_registration_register') }}">Create an account</a></p>
+    </form>
+</div>
+

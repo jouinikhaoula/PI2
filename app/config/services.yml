@@ -1,0 +1,6 @@
+# Learn more about services, parameters and containers at
+
+services:
+    redirect.after.login:
+       class: AllForKids\MainBundle\Redirection\AfterLoginRedirection
+       arguments:    ['@router']

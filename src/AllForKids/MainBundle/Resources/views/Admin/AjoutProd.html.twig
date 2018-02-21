@@ -1,0 +1,118 @@
+{% extends '@AllForKidsMain/Admin/show.html.twig'%}
+   {% block body %}
+       <div class="srch"><button></button></div>
+       <script type="text/javascript">
+           $('.main-search').hide();
+           $('button').click(function (){
+                   $('.main-search').show();
+                   $('.main-search text').focus();
+               }
+           );
+           $('.close').click(function(){
+               $('.main-search').hide();
+           });
+       </script>
+
+     <div class="outter-wp">
+         <!--sub-heard-part-->
+
+         <div class="sub-heard-part">
+            <ol class="breadcrumb m-b-0">
+               <li><a href="#">Home</a></li>
+               <li class="active">Produits</li>
+
+            </ol>
+         </div>
+
+
+
+         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+            <div class="modal-dialog">
+               <div class="modal-content">
+                  <div class="modal-header">
+                     <button type="button" class="close second" data-dismiss="modal" aria-hidden="true">×</button>
+                     <h2 class="modal-title">Ajout Produit</h2>
+                  </div>
+
+                       <div class="form-body" style="margin-left:12%">
+                           {{ form_start(form) }}
+                           <table>
+                         <tr>
+                           <div class="form-group">
+                               <label for="exampleInputEmail1">Nom Produit:</label>
+
+                               {{ form_widget(form.nom) }}
+                           </div>
+                         </tr>
+                               <tr>
+                                   <div class="form-group">
+                                       <label for="exampleInputEmail1">Prix:</label>
+
+                                       {{ form_widget( form.prix) }}
+                                   </div>
+
+                               </tr>
+                               <tr>
+                                   <div class="form-group">
+                                       <label for="exampleInputEmail1">Quantite:</label>
+
+                                       {{ form_widget( form.quantite) }}
+                                   </div>
+                               </tr>
+
+
+                                <tr>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Image:</label>
+
+                                        {{ form_widget( form.image) }}
+                                    </div>
+                                </tr>
+
+                               <tr>
+                                   <div class="form-group">
+                                       <label for="exampleInputEmail1">Categorie:</label>
+
+                                       {{ form_widget( form.categorie) }}
+                                   </div>
+
+                               </tr>
+                               <tr>
+                                   <div class="form-group">
+                                       <label for="exampleInputEmail1">Disponibilite:</label>
+
+                                       {{ form_widget( form.disponible) }}
+                                   </div>
+
+                               </tr>
+
+                               <tr>
+                                   <div class="modal-footer">
+                                       {{ form_widget( form.Ajouter) }}
+
+                                   </div>
+                               </tr>
+
+                      {{ form_end(form) }}
+                           </table>
+                  </div>
+
+               </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+         </div>
+
+
+
+
+         <h3 class="inner-tittle two">Produits </h3>
+         <center> <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+               Ajouter Produits
+            </button></center>
+
+     </div>
+
+
+
+
+
+   {% endblock %}

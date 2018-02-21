@@ -1,0 +1,9 @@
+all_for_kids_main:
+    resource: "@AllForKidsMainBundle/Resources/config/routing.yml"
+    prefix:   /pi
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
